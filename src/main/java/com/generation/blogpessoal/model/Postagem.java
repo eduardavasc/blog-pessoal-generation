@@ -43,9 +43,14 @@ public class Postagem {
 	// listamos um objeto Postagem, o objeto Tema (criado na linha 39) não será
 	// exibido diretamente, evitando redundâncias no JSON.
 	private Tema tema;
-
 	// Receberá os dados do Tema associado ao Objeto da Classe Postagem. Este Objeto
-	// representa a Chave Estrangeira da Tabela tb_postagens (tema_id).
+	// representa a Chave Estrangeira da Tabela tb_postagens (tema_id)
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -84,6 +89,14 @@ public class Postagem {
 
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }
